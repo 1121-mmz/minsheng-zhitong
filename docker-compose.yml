@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  # 1. 业务后端 Spring Boot（内置 H2 文件数据库）
+  backend:
+    build: ./backend
+    container_name: minsheng-backend
+    ports:
+      - "8080:8080"
+    environment:
+      - AI_SERVICE_URL=http://ai-service:8000/triage
+    volumes:
+      - backend_data:/app/data
+    depends_on:
+      - ai-service
+
+  # 2. AI 服务 Python FastAPI（大模型分诊 + 向量检索 RAG）
+  ai-service:
+    build: ./ai-service
+    container_name: minsheng-ai
+    ports:
+      - "8000:8000"
+    environment:
+      - DEEPSEEK_API_KEY=${DEEPSEEK_API_KEY:-请替换成你的key}
+      - QDRANT_HOST=qdrant
+      - QDRANT_PORT=6333
+      - HF_ENDPOINT=https://hf-mirror.com
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - hf_cache:/root/.cache
+    depends_on:
+      - qdrant
+
+  # 3. Qdrant 向量数据库
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: minsheng-qdrant
+    ports:
+      - "6333:6333"
+    volumes:
+      - qdrant_data:/qdrant/storage
+
+  # 4. 前端 Vue3 + Nginx
+  frontend:
+    build: ./frontend
+    container_name: minsheng-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+volumes:
+  backend_data:
+  qdrant_data:
+  hf_cache:

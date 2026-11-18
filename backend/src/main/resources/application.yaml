@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    # 去掉那两个冲突的参数，只保留文件模式和 MySQL 兼容
+    url: jdbc:h2:file:./data/minsheng_db;MODE=MySQL
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
+      path: /h2-console

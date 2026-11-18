@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+openai
+pydantic
+qdrant-client>=1.9.0,<2.0
+fastembed>=0.3.0
+langgraph

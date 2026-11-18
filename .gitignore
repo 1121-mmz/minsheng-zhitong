@@ -1,0 +1,35 @@
+# 依赖目录
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# 构建产物
+target/
+dist/
+build/
+
+# 本地数据库文件（H2）
+backend/data/
+
+# 环境变量 / 密钥（切勿提交！）
+.env
+.env.local
+*.env
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# 日志
+*.log
+logs/
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 课程设计报告（不上传）
+课程设计报告*
