@@ -17,7 +17,7 @@ public class User {
 
     private String password; // 密码
 
-    private String role;     // 角色 (ADMIN 或 USER)
+    private String role;     // 角色 
 
     private LocalDateTime createTime;
 }
