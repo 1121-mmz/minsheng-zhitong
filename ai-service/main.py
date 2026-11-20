@@ -20,7 +20,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# API Key 从环境变量读取，不要写死在代码里。
+# API Key 从环境变量读取
 API_KEY = os.getenv("DEEPSEEK_API_KEY", "")
 if not API_KEY:
     print("[警告] 未设置 DEEPSEEK_API_KEY，AI 分诊将走兜底逻辑。")
