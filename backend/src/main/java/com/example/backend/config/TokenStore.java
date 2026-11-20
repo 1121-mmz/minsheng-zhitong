@@ -15,7 +15,7 @@ import java.util.Base64;
 @Component
 public class TokenStore {
 
-    // 签名密钥（演示用，正式环境应放到配置或环境变量）
+    // 签名密钥
     private static final String SECRET = "minsheng-zhitong-demo-secret-key";
     private static final String HMAC_ALGO = "HmacSHA256";
 
