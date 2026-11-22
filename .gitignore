@@ -13,7 +13,7 @@ build/
 # 本地数据库文件（H2）
 backend/data/
 
-# 环境变量 / 密钥（切勿提交！）
+# 环境变量 / 密钥
 .env
 .env.local
 *.env
@@ -31,5 +31,3 @@ logs/
 .DS_Store
 Thumbs.db
 
-# 课程设计报告（不上传）
-课程设计报告*
